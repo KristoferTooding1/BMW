@@ -1,297 +1,286 @@
 <!DOCTYPE html>
-<html lang="et">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>BMW M Shop</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Shop - Modern E-Commerce Template</title>
     <link rel="stylesheet" href="pood.css">
     <style>
-        /* ===== CART BUTTON STYLING ===== */
-        /* This is the 🛒 Cart button in the top-right corner */
-        /* position: absolute means it stays in one spot even when scrolling */
+        /* Cart Button */
         .cart-link {
-            position: absolute;
-            top: 20px;  /* 20px from the top */
-            right: 20px;  /* 20px from the right edge */
-            background: #1c69d4;  /* Blue background */
-            color: rgb(255, 255, 255);
-            padding: 10px 20px;
-            border-radius: 4px;
-            text-decoration: none;  /* Remove underline */
-            font-weight: bold;
-            display: flex;  /* Use flexbox to align items */
-            align-items: center;  /* Vertically center */
-            gap: 10px;  /* Space between icon and badge */
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            background: var(--accent-color);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 16px rgba(28, 105, 212, 0.3);
+            z-index: 1000;
         }
         
         .cart-link:hover {
-            background: #ffffff;  /* Turn white on hover for contrast */
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(28, 105, 212, 0.5);
+            background: var(--accent-hover);
         }
         
-        /* ===== CART ITEM COUNT BADGE ===== */
-        /* The red circle with a number (e.g., "3") showing items in cart */
         #cart-count {
             background: #ff4444;
             color: white;
-            width: 24px;
+            min-width: 24px;
             height: 24px;
-            border-radius: 50%;  /* border-radius: 50% creates a perfect circle */
-            display: flex;  /* Center the number */
+            border-radius: 12px;
+            display: flex;
             align-items: center;
             justify-content: center;
             font-size: 12px;
-            font-weight: bold;
+            font-weight: 700;
+            padding: 0 8px;
         }
         
-        /* ===== FILTER SECTION ===== */
-        /* Container for search box, price inputs, and quick filter buttons */
+        /* Filter Section */
         .filter-section {
             text-align: center;
-            padding: 30px 20px;
-            background: #0a0a0a;  /* Slightly lighter background for contrast */
+            padding: 40px 20px;
+            background: rgba(28, 105, 212, 0.03);
             margin-bottom: 20px;
+            border-radius: 24px;
+            max-width: 1200px;
+            margin: 40px auto;
         }
         
         .filter-section h2 {
-            margin-top: 0;
-            color: #fff;
+            margin: 0 0 32px 0;
+            color: var(--text-primary);
+            font-size: 28px;
+            font-weight: 700;
         }
         
-        /* ===== FILTER INPUT CONTROLS ===== */
-        /* Styles for search box, price min/max, and reset button */
         .filter-controls {
-            display: flex;  /* Arrange items horizontally */
-            flex-wrap: wrap;  /* Wrap to next line on small screens (responsive) */
+            display: flex;
+            flex-wrap: wrap;
             justify-content: center;
-            gap: 15px;  /* Space between each input */
-            margin-bottom: 15px;
+            gap: 12px;
+            margin-bottom: 24px;
         }
         
         .filter-controls input,
         .filter-controls button {
-            padding: 10px 15px;
-            border-radius: 4px;
-            border: 1px solid #1c69d4;
-            background: #111;
-            color: #fff;
+            padding: 12px 20px;
+            border-radius: 12px;
+            border: 2px solid var(--border-color);
+            background: var(--card-bg);
+            color: var(--text-primary);
             font-size: 14px;
             cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .filter-controls input {
+            min-width: 180px;
         }
         
         .filter-controls input::placeholder {
-            color: #888;  /* Placeholder text appears grayed out */
+            color: var(--text-muted);
         }
         
         .filter-controls input:focus,
         .filter-controls button:focus {
-            outline: none;  /* Remove browser default outline */
-            background: #1c69d4;  /* Fill with blue to show it's active */
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px var(--accent-light);
         }
         
         .filter-controls button:hover {
-            background: #1c69d4;
-            transform: translateY(-2px);  /* Move up slightly on hover */
+            background: var(--accent-color);
+            border-color: var(--accent-color);
+            color: white;
+            transform: translateY(-2px);
         }
         
-        /* ===== QUICK FILTER BUTTONS ===== */
-        /* The "M3", "M4", "M5", "Affordable", "Luxury" buttons */
+        /* Quick Filters */
         .quick-filters {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 10px;
+            gap: 12px;
         }
         
         .quick-filters button {
-            background: #1c69d4;
-            color: #fff;
-            border: none;
-            padding: 8px 12px;
-            border-radius: 20px;  /* Very rounded = pill-shaped */
+            background: var(--card-bg);
+            color: var(--text-primary);
+            border: 2px solid var(--border-color);
+            padding: 10px 20px;
+            border-radius: 24px;
             cursor: pointer;
-            font-size: 13px;
-            transition: all .2s ease;  /* Smooth animation on hover */
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
         }
         
         .quick-filters button:hover {
-            background: #0041b2;  /* Darker blue */
-            transform: scale(1.05);  /* Grow 5% larger */
+            background: var(--accent-color);
+            border-color: var(--accent-color);
+            color: white;
+            transform: scale(1.05);
         }
         
-        /* ===== THEME TOGGLE BUTTON ===== */
-        /* Positioned next to the cart button in the top-right corner */
+        /* Theme Toggle */
         #themeToggle {
-            position: absolute;
-            top: 20px;
-            right: 165px;  /* To the left of cart button */
-            background: var(--accent-color);
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 4px;
+            position: fixed;
+            top: 24px;
+            right: 200px;
+            background: var(--card-bg);
+            color: var(--text-primary);
+            padding: 12px 20px;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
             cursor: pointer;
-            font-weight: bold;
-            transition: all .2s ease;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            z-index: 1000;
         }
         
         #themeToggle:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(28, 105, 212, 0.3);
+            border-color: var(--accent-color);
+            box-shadow: 0 4px 16px rgba(28, 105, 212, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .cart-link {
+                right: 16px;
+                top: 16px;
+                padding: 10px 16px;
+                font-size: 14px;
+            }
+            
+            #themeToggle {
+                top: 70px;
+                right: 16px;
+                padding: 8px 16px;
+                font-size: 13px;
+            }
+
+            .filter-controls input {
+                min-width: 100%;
+            }
         }
     </style>
 </head>
 <body>
 
-<!-- ===== PAGE HEADER ===== -->
-<!-- This is the main section at the top with the page title and cart button -->
 <header class="hero">
-    <!-- Theme toggle button: switches between light and dark mode -->
-    <!-- onclick="toggleTheme()" calls the function from theme.js when clicked -->
-    <!-- id="themeToggle" allows theme.js to update the button text -->
     <button id="themeToggle" onclick="toggleTheme()">🌙 Dark Mode</button>
     
-    <!-- Cart link: positioned absolutely in top-right corner -->
-    <!-- When clicked, goes to ostukorv.html (shopping cart page) -->
     <a href="ostukorv.html" class="cart-link">
        🛒 Cart <span id="cart-count" style="display: none;">0</span>
     </a>
-    <h1>BMW M Shop</h1>
-    <p>Power. Precision. Emotion.</p>
+    
+    <h1>Premium Shop</h1>
+    <p>Modern E-Commerce Template • Fully Functional • Ready to Customize</p>
 </header>
 
-<!-- ===== TOAST NOTIFICATION CONTAINER ===== -->
-<!-- This hidden div is where cart.js displays notifications (e.g., "item added!")
-     cart.js controls this element and makes it visible/invisible as needed -->
 <div id="toast" aria-live="polite" style="display:none"></div>
 
-<!-- ===== FILTER & SEARCH SECTION ===== -->
-<!-- Lets users find specific cars they're looking for -->
 <section class="filter-section">
-    <h2>Search</h2>
-    <!-- Search and price range inputs -->
+    <h2>🔍 Find Your Perfect Product</h2>
+    
     <div class="filter-controls">
-        <!-- Search input: filter.js listens for input event to search in real-time -->
-        <input type="text" id="searchInput" placeholder="Search by model (e.g., M3, M4, M5)">
-        <!-- Minimum price: filter.js listens for change event (when user clicks away) -->
+        <input type="text" id="searchInput" placeholder="Search by model...">
         <input type="number" id="minPrice" placeholder="Min Price (€)">
-        <!-- Maximum price: filter.js listens for change event -->
         <input type="number" id="maxPrice" placeholder="Max Price (€)">
-        <!-- Reset button clears all filters and shows all cars -->
         <button onclick="resetFilters()">Reset Filters</button>
     </div>
     
-    <!-- Quick filter buttons: let users quickly jump to specific models or price ranges -->
     <div class="quick-filters">
-        <!-- Each button calls quickFilter() with a different parameter -->
-        <button onclick="quickFilter('M3')">M3</button>
-        <button onclick="quickFilter('M4')">M4</button>
-        <button onclick="quickFilter('M5')">M5</button>
-        <button onclick="quickFilter('affordable')">Affordable (< €100k)</button>
-        <button onclick="quickFilter('luxury')">Luxury (> €100k)</button>
+        <button onclick="quickFilter('M3')">M3 Series</button>
+        <button onclick="quickFilter('M4')">M4 Series</button>
+        <button onclick="quickFilter('M5')">M5 Series</button>
+        <button onclick="quickFilter('affordable')">Under €100k</button>
+        <button onclick="quickFilter('luxury')">Premium (€100k+)</button>
     </div>
 </section>
 
-<!-- ===== PRODUCT CARDS CONTAINER ===== -->
-<!-- This flexbox arranges product cards in rows that wrap on small screens -->
 <section class="cards">
 
-    <!-- ===== BMW M3 PRODUCT CARD ===== -->
-    <!-- data-name and data-price are custom attributes used by filter.js -->
-    <!-- These store the product info so filtering JavaScript can read them -->
     <div class="card" data-name="BMW M3" data-price="89900">
         <span class="badge">Sports Classic</span>
         <img src="https://www.perfectautocollection.com/imagetag/3117/2/l/Used-2024-BMW-M3-1719347287.jpg" alt="BMW M3">
         <h2>BMW M3</h2>
-        <p class="price">89 900 €</p>
+        <p class="price">€89,900</p>
         <ul>
-            <li>3.0L Twin-Turbo R6</li>
-            <li>480 hp</li>
-            <li>0–100 km/h 4.2 s</li>
-            <li>Available in 2024!</li>
+            <li>3.0L Twin-Turbo Inline-6</li>
+            <li>480 horsepower</li>
+            <li>0–100 km/h in 4.2 seconds</li>
+            <li>Available in 2024</li>
         </ul>
-        <!-- Learn more button: navigation link -->
-        <a href="M3.html" class="btn">Learn more</a>
-        <!-- Purchase button: runs addToCart() function from cart.js -->
-        <!-- Cart badge updates automatically after clicking -->
-        <button class="btn primary" onclick="addToCart('BMW M3', 89900, 1);" style="background: #1c69d4; margin-top: 10px;">Purchase now!</button>
+        <a href="M3.html" class="btn">Learn More</a>
+        <button class="btn primary" onclick="addToCart('BMW M3', 89900, 1);">Add to Cart</button>
     </div>
 
-    <!-- ===== BMW M4 PRODUCT CARD ===== -->
-    <!-- Featured card has class="featured" which adds a blue border (see pood.css) -->
     <div class="card featured" data-name="BMW M4" data-price="94900">
-        <span class="badge blue">Road legend</span>
+        <span class="badge blue">Featured</span>
         <img src="https://accelerista.com/wp-content/uploads/2024/05/P90548559_lowRes_the-all-new-bmw-m4-c.jpg" alt="BMW M4">
         <h2>BMW M4</h2>
-        <p class="price">94 900 €</p>
+        <p class="price">€94,900</p>
         <ul>
-            <li>3.0L Twin-Turbo R6</li>
-            <li>510 hp</li>
-            <li>0–100 km/h 3.9 s</li>
-            <li>Available in 2022!</li>
+            <li>3.0L Twin-Turbo Inline-6</li>
+            <li>510 horsepower</li>
+            <li>0–100 km/h in 3.9 seconds</li>
+            <li>Available in 2022</li>
         </ul>
-        <a href="M4.html" class="btn">Learn more</a>
-            <button class="btn primary" onclick="addToCart('BMW M4', 94900, 2);" style="background: #1c69d4; margin-top: 10px;">Purchase now!</button>
+        <a href="M4.html" class="btn">Learn More</a>
+        <button class="btn primary" onclick="addToCart('BMW M4', 94900, 2);">Add to Cart</button>
     </div>
 
-    <!-- ===== BMW M5 PRODUCT CARD ===== -->
     <div class="card" data-name="BMW M5" data-price="129900">
-        <span class="badge">Luxury power</span>
+        <span class="badge">Luxury Power</span>
         <img src="https://r44performance.com/cdn/shop/articles/BMW-G90-M5-Review-Specs.jpg?v=1719568245&width=1500" alt="BMW M5">
         <h2>BMW M5</h2>
-        <p class="price">129 900 €</p>
+        <p class="price">€129,900</p>
         <ul>
             <li>4.4L Twin-Turbo V8</li>
-            <li>625 hp</li>
-            <li>0–100 km/h 3.3 s</li>
-            <li>Coming soon!</li>
+            <li>625 horsepower</li>
+            <li>0–100 km/h in 3.3 seconds</li>
+            <li>Coming Soon</li>
         </ul>
-        <a href="M5.html" class="btn">Learn more</a>
-            <button class="btn primary" onclick="addToCart('BMW M5', 129900, 3);" style="background: #1c69d4; margin-top: 10px;">Purchase now!</button>
+        <a href="M5.html" class="btn">Learn More</a>
+        <button class="btn primary" onclick="addToCart('BMW M5', 129900, 3);">Add to Cart</button>
     </div>
 
 </section>
 
 <section class="timeline">
-    <h2>BMW M models through the years:</h2>
+    <h2>Evolution Timeline</h2>
     <div class="year">
         <h3>2018</h3>
-        <p>M3 F80 – RWD, All-Sport.</p>
+        <p>M3 F80 – Rear-Wheel Drive, Pure Sport Performance</p>
     </div>
     <div class="year">
         <h3>2021</h3>
-        <p>M4 G82 – Aggressive newcomer, M xDrive.</p>
+        <p>M4 G82 – Aggressive Redesign, M xDrive Available</p>
     </div>
     <div class="year">
         <h3>2023</h3>
-        <p>M5 Competition – Luxury and supercar power.</p>
+        <p>M5 Competition – Luxury Meets Supercar Power</p>
     </div>
 </section>
 
 <footer>
-    <p>© 2026 BMW M Shop • Learning project</p>
+    <p>© 2026 Premium Shop • Modern E-Commerce Template</p>
 </footer>
 
-<!-- ===== SCRIPT IMPORTS ===== -->
-<!-- External JavaScript files that add interactivity to the page -->
-
-<!-- theme.js: Handles light/dark mode switching
-     - applyTheme() switches between light and dark colors
-     - toggleTheme() switches themes when button is clicked
-     - Uses CSS variables that cascade to entire page
-     - Saves preference to localStorage so it's remembered -->
 <script src="theme.js"></script>
-
-<!-- cart.js: Handles shopping cart functionality
-     - addToCart() adds items to cart
-     - updateCartCount() updates the badge
-     - showToast() displays notifications
-     - localStorage stores cart data so it persists -->
 <script src="cart.js"></script>
-
-<!-- filter.js: Handles search & filter functionality
-     - filterProducts() searches/filters by name and price
-     - quickFilter() handles quick filter button clicks
-     - resetFilters() clears all filters
-     - Uses data-name and data-price attributes from cards -->
 <script src="filter.js"></script>
 
 </body>
