@@ -3,281 +3,214 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premium Shop - Modern E-Commerce Template</title>
+    <title>BMW M Collection - Premium Performance Vehicles</title>
     <link rel="stylesheet" href="pood.css">
-    <style>
-        /* Cart Button */
-        .cart-link {
-            position: fixed;
-            top: 24px;
-            right: 24px;
-            background: var(--accent-color);
-            color: white;
-            padding: 12px 24px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 16px rgba(28, 105, 212, 0.3);
-            z-index: 1000;
-        }
-        
-        .cart-link:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(28, 105, 212, 0.5);
-            background: var(--accent-hover);
-        }
-        
-        #cart-count {
-            background: #ff4444;
-            color: white;
-            min-width: 24px;
-            height: 24px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            font-weight: 700;
-            padding: 0 8px;
-        }
-        
-        /* Filter Section */
-        .filter-section {
-            text-align: center;
-            padding: 40px 20px;
-            background: rgba(28, 105, 212, 0.03);
-            margin-bottom: 20px;
-            border-radius: 24px;
-            max-width: 1200px;
-            margin: 40px auto;
-        }
-        
-        .filter-section h2 {
-            margin: 0 0 32px 0;
-            color: var(--text-primary);
-            font-size: 28px;
-            font-weight: 700;
-        }
-        
-        .filter-controls {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 12px;
-            margin-bottom: 24px;
-        }
-        
-        .filter-controls input,
-        .filter-controls button {
-            padding: 12px 20px;
-            border-radius: 12px;
-            border: 2px solid var(--border-color);
-            background: var(--card-bg);
-            color: var(--text-primary);
-            font-size: 14px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 500;
-        }
-        
-        .filter-controls input {
-            min-width: 180px;
-        }
-        
-        .filter-controls input::placeholder {
-            color: var(--text-muted);
-        }
-        
-        .filter-controls input:focus,
-        .filter-controls button:focus {
-            outline: none;
-            border-color: var(--accent-color);
-            box-shadow: 0 0 0 3px var(--accent-light);
-        }
-        
-        .filter-controls button:hover {
-            background: var(--accent-color);
-            border-color: var(--accent-color);
-            color: white;
-            transform: translateY(-2px);
-        }
-        
-        /* Quick Filters */
-        .quick-filters {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 12px;
-        }
-        
-        .quick-filters button {
-            background: var(--card-bg);
-            color: var(--text-primary);
-            border: 2px solid var(--border-color);
-            padding: 10px 20px;
-            border-radius: 24px;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        
-        .quick-filters button:hover {
-            background: var(--accent-color);
-            border-color: var(--accent-color);
-            color: white;
-            transform: scale(1.05);
-        }
-        
-        /* Theme Toggle */
-        #themeToggle {
-            position: fixed;
-            top: 24px;
-            right: 200px;
-            background: var(--card-bg);
-            color: var(--text-primary);
-            padding: 12px 20px;
-            border: 2px solid var(--border-color);
-            border-radius: 12px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            z-index: 1000;
-        }
-        
-        #themeToggle:hover {
-            transform: translateY(-2px);
-            border-color: var(--accent-color);
-            box-shadow: 0 4px 16px rgba(28, 105, 212, 0.2);
-        }
-
-        @media (max-width: 768px) {
-            .cart-link {
-                right: 16px;
-                top: 16px;
-                padding: 10px 16px;
-                font-size: 14px;
-            }
-            
-            #themeToggle {
-                top: 70px;
-                right: 16px;
-                padding: 8px 16px;
-                font-size: 13px;
-            }
-
-            .filter-controls input {
-                min-width: 100%;
-            }
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<header class="hero">
-    <button id="themeToggle" onclick="toggleTheme()">🌙 Dark Mode</button>
-    
-    <a href="ostukorv.html" class="cart-link">
-       🛒 Cart <span id="cart-count" style="display: none;">0</span>
-    </a>
-    
-    <h1>Premium Shop</h1>
-    <p>Modern E-Commerce Template • Fully Functional • Ready to Customize</p>
-</header>
+<!-- Navigation -->
+<nav class="nav">
+    <div class="nav-container">
+        <div class="nav-brand">BMW M</div>
+        <div class="nav-links">
+            <a href="#collection">Collection</a>
+            <a href="#features">Features</a>
+            <button id="themeToggle" onclick="toggleTheme()" class="theme-btn">
+                <span class="theme-icon">☀️</span>
+            </button>
+            <a href="ostukorv.html" class="cart-btn">
+                <span class="cart-icon">🛒</span>
+                <span id="cart-count" class="cart-badge" style="display: none;">0</span>
+            </a>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero-new">
+    <div class="hero-content">
+        <h1 class="hero-title">
+            The Ultimate<br>
+            Driving Machine
+        </h1>
+        <p class="hero-subtitle">
+            Experience the pinnacle of automotive engineering with the BMW M Series. 
+            Power, precision, and performance refined to perfection.
+        </p>
+        <div class="hero-cta">
+            <a href="#collection" class="btn-primary-new">Explore Collection</a>
+            <a href="#features" class="btn-secondary-new">Learn More</a>
+        </div>
+    </div>
+    <div class="hero-stats">
+        <div class="stat">
+            <div class="stat-number">625</div>
+            <div class="stat-label">Horsepower</div>
+        </div>
+        <div class="stat">
+            <div class="stat-number">3.3s</div>
+            <div class="stat-label">0-100 km/h</div>
+        </div>
+        <div class="stat">
+            <div class="stat-number">3</div>
+            <div class="stat-label">Models</div>
+        </div>
+    </div>
+</section>
+
+<!-- Search Filters -->
+<section class="filters" id="collection">
+    <div class="filters-container">
+        <input type="text" id="searchInput" placeholder="Search models..." class="filter-input">
+        <input type="number" id="minPrice" placeholder="Min €" class="filter-input filter-input-small">
+        <input type="number" id="maxPrice" placeholder="Max €" class="filter-input filter-input-small">
+        <button onclick="resetFilters()" class="filter-reset">Reset</button>
+    </div>
+    <div class="filter-tags">
+        <button onclick="quickFilter('M3')" class="tag">M3</button>
+        <button onclick="quickFilter('M4')" class="tag">M4</button>
+        <button onclick="quickFilter('M5')" class="tag">M5</button>
+        <button onclick="quickFilter('affordable')" class="tag">Under €100k</button>
+        <button onclick="quickFilter('luxury')" class="tag">Premium</button>
+    </div>
+</section>
+
+<!-- Product Grid -->
+<section class="products">
+    <div class="products-grid">
+        
+        <div class="product-card" data-name="BMW M3" data-price="89900">
+            <div class="product-image">
+                <img src="https://www.perfectautocollection.com/imagetag/3117/2/l/Used-2024-BMW-M3-1719347287.jpg" alt="BMW M3">
+                <span class="product-badge">Sport</span>
+            </div>
+            <div class="product-info">
+                <h3 class="product-name">BMW M3</h3>
+                <p class="product-desc">The perfect balance of performance and daily usability</p>
+                <div class="product-specs">
+                    <span>480 HP</span>
+                    <span>4.2s</span>
+                    <span>RWD/xDrive</span>
+                </div>
+                <div class="product-footer">
+                    <div class="product-price">€89,900</div>
+                    <div class="product-actions">
+                        <a href="M3.html" class="btn-link">Details</a>
+                        <button onclick="addToCart('BMW M3', 89900, 1)" class="btn-add">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-card featured-card" data-name="BMW M4" data-price="94900">
+            <div class="product-image">
+                <img src="https://accelerista.com/wp-content/uploads/2024/05/P90548559_lowRes_the-all-new-bmw-m4-c.jpg" alt="BMW M4">
+                <span class="product-badge badge-featured">Featured</span>
+            </div>
+            <div class="product-info">
+                <h3 class="product-name">BMW M4</h3>
+                <p class="product-desc">Aggressive design meets pure driving emotion</p>
+                <div class="product-specs">
+                    <span>510 HP</span>
+                    <span>3.9s</span>
+                    <span>Coupé</span>
+                </div>
+                <div class="product-footer">
+                    <div class="product-price">€94,900</div>
+                    <div class="product-actions">
+                        <a href="M4.html" class="btn-link">Details</a>
+                        <button onclick="addToCart('BMW M4', 94900, 2)" class="btn-add">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-card" data-name="BMW M5" data-price="129900">
+            <div class="product-image">
+                <img src="https://r44performance.com/cdn/shop/articles/BMW-G90-M5-Review-Specs.jpg?v=1719568245&width=1500" alt="BMW M5">
+                <span class="product-badge">Luxury</span>
+            </div>
+            <div class="product-info">
+                <h3 class="product-name">BMW M5</h3>
+                <p class="product-desc">Executive sedan with supercar performance</p>
+                <div class="product-specs">
+                    <span>625 HP</span>
+                    <span>3.3s</span>
+                    <span>M xDrive</span>
+                </div>
+                <div class="product-footer">
+                    <div class="product-price">€129,900</div>
+                    <div class="product-actions">
+                        <a href="M5.html" class="btn-link">Details</a>
+                        <button onclick="addToCart('BMW M5', 129900, 3)" class="btn-add">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="features" id="features">
+    <h2 class="section-title">Why Choose BMW M</h2>
+    <div class="features-grid">
+        <div class="feature">
+            <div class="feature-icon">⚡</div>
+            <h3>Unmatched Performance</h3>
+            <p>Hand-built engines delivering pure power and precision</p>
+        </div>
+        <div class="feature">
+            <div class="feature-icon">🏆</div>
+            <h3>Racing Heritage</h3>
+            <p>Decades of motorsport excellence in every detail</p>
+        </div>
+        <div class="feature">
+            <div class="feature-icon">🔧</div>
+            <h3>Advanced Technology</h3>
+            <p>Cutting-edge engineering and driver assistance systems</p>
+        </div>
+        <div class="feature">
+            <div class="feature-icon">💎</div>
+            <h3>Luxury & Comfort</h3>
+            <p>Premium materials and craftsmanship throughout</p>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-section">
+            <h4>BMW M Collection</h4>
+            <p>Premium performance vehicles crafted for driving enthusiasts</p>
+        </div>
+        <div class="footer-section">
+            <h4>Collection</h4>
+            <a href="#collection">M3 Series</a>
+            <a href="#collection">M4 Series</a>
+            <a href="#collection">M5 Series</a>
+        </div>
+        <div class="footer-section">
+            <h4>Support</h4>
+            <a href="#">Contact Us</a>
+            <a href="#">FAQ</a>
+            <a href="#">Financing</a>
+        </div>
+        <div class="footer-section">
+            <h4>Company</h4>
+            <a href="#">About</a>
+            <a href="#">Careers</a>
+            <a href="#">Privacy Policy</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2026 BMW M Collection. Premium E-Commerce Template.</p>
+    </div>
+</footer>
 
 <div id="toast" aria-live="polite" style="display:none"></div>
-
-<section class="filter-section">
-    <h2>🔍 Find Your Perfect Product</h2>
-    
-    <div class="filter-controls">
-        <input type="text" id="searchInput" placeholder="Search by model...">
-        <input type="number" id="minPrice" placeholder="Min Price (€)">
-        <input type="number" id="maxPrice" placeholder="Max Price (€)">
-        <button onclick="resetFilters()">Reset Filters</button>
-    </div>
-    
-    <div class="quick-filters">
-        <button onclick="quickFilter('M3')">M3 Series</button>
-        <button onclick="quickFilter('M4')">M4 Series</button>
-        <button onclick="quickFilter('M5')">M5 Series</button>
-        <button onclick="quickFilter('affordable')">Under €100k</button>
-        <button onclick="quickFilter('luxury')">Premium (€100k+)</button>
-    </div>
-</section>
-
-<section class="cards">
-
-    <div class="card" data-name="BMW M3" data-price="89900">
-        <span class="badge">Sports Classic</span>
-        <img src="https://www.perfectautocollection.com/imagetag/3117/2/l/Used-2024-BMW-M3-1719347287.jpg" alt="BMW M3">
-        <h2>BMW M3</h2>
-        <p class="price">€89,900</p>
-        <ul>
-            <li>3.0L Twin-Turbo Inline-6</li>
-            <li>480 horsepower</li>
-            <li>0–100 km/h in 4.2 seconds</li>
-            <li>Available in 2024</li>
-        </ul>
-        <a href="M3.html" class="btn">Learn More</a>
-        <button class="btn primary" onclick="addToCart('BMW M3', 89900, 1);">Add to Cart</button>
-    </div>
-
-    <div class="card featured" data-name="BMW M4" data-price="94900">
-        <span class="badge blue">Featured</span>
-        <img src="https://accelerista.com/wp-content/uploads/2024/05/P90548559_lowRes_the-all-new-bmw-m4-c.jpg" alt="BMW M4">
-        <h2>BMW M4</h2>
-        <p class="price">€94,900</p>
-        <ul>
-            <li>3.0L Twin-Turbo Inline-6</li>
-            <li>510 horsepower</li>
-            <li>0–100 km/h in 3.9 seconds</li>
-            <li>Available in 2022</li>
-        </ul>
-        <a href="M4.html" class="btn">Learn More</a>
-        <button class="btn primary" onclick="addToCart('BMW M4', 94900, 2);">Add to Cart</button>
-    </div>
-
-    <div class="card" data-name="BMW M5" data-price="129900">
-        <span class="badge">Luxury Power</span>
-        <img src="https://r44performance.com/cdn/shop/articles/BMW-G90-M5-Review-Specs.jpg?v=1719568245&width=1500" alt="BMW M5">
-        <h2>BMW M5</h2>
-        <p class="price">€129,900</p>
-        <ul>
-            <li>4.4L Twin-Turbo V8</li>
-            <li>625 horsepower</li>
-            <li>0–100 km/h in 3.3 seconds</li>
-            <li>Coming Soon</li>
-        </ul>
-        <a href="M5.html" class="btn">Learn More</a>
-        <button class="btn primary" onclick="addToCart('BMW M5', 129900, 3);">Add to Cart</button>
-    </div>
-
-</section>
-
-<section class="timeline">
-    <h2>Evolution Timeline</h2>
-    <div class="year">
-        <h3>2018</h3>
-        <p>M3 F80 – Rear-Wheel Drive, Pure Sport Performance</p>
-    </div>
-    <div class="year">
-        <h3>2021</h3>
-        <p>M4 G82 – Aggressive Redesign, M xDrive Available</p>
-    </div>
-    <div class="year">
-        <h3>2023</h3>
-        <p>M5 Competition – Luxury Meets Supercar Power</p>
-    </div>
-</section>
-
-<footer>
-    <p>© 2026 Premium Shop • Modern E-Commerce Template</p>
-</footer>
 
 <script src="theme.js"></script>
 <script src="cart.js"></script>
