@@ -174,7 +174,7 @@ function displayCart() {
                 </div>
                 
                 <div class="item-total">
-                    <p>Kokku: €${(item.price * item.quantity).toFixed(2)}</p>
+                    <p>Total price: €${(item.price * item.quantity).toFixed(2)}</p>
                 </div>
                 
                 <button class="btn-remove" onclick="removeFromCart(${item.id})">Remove</button>
@@ -215,7 +215,7 @@ function updateCartCount() {
 // ===== FUNCTION TO CLEAR ENTIRE CART =====
 function clearCart() {
     // Ask user for confirmation (prevent accidental deletion)
-    if (confirm('Oled sa kindel? Kõik tooted eemaldatakse ostukorvist.')) {
+    if (confirm('Are you sure? All products will be removed from the cart.')) {
         // Reset cart to empty array
         cart = [];
         // Remove from localStorage
