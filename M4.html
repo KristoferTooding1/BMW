@@ -1,31 +1,75 @@
 <!DOCTYPE html>
-<html lang="et">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>BMW M4</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMW M4 - Premium Performance</title>
     <link rel="stylesheet" href="pood.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<header class="sub-hero">
-    <h1>BMW M4</h1>
-    <p>Aggressive design. Pure adrenaline.</p>
-</header>
+<!-- Navigation -->
+<nav class="nav">
+    <div class="nav-container">
+        <div class="nav-brand">BMW M</div>
+        <div class="nav-links">
+            <a href="esileht.html">Back to Collection</a>
+            <a href="ostukorv.html" class="cart-btn">
+                <span class="cart-icon">Cart</span>
+                <span id="cart-count" class="cart-badge" style="display: none;">0</span>
+            </a>
+        </div>
+    </div>
+</nav>
 
-<section class="content">
-    <img src="https://accelerista.com/wp-content/uploads/2024/05/P90548559_lowRes_the-all-new-bmw-m4-c.jpg" alt="BMW M4">
-    <p>
-        BMW M4 is a coupe designed for emotions.
-        The perfect choice for drivers who want to stand out.
-    </p>
-    <ul>
-        <li>510 hp</li>
-        <li>0–100 km/h 3.9 s</li>
-        <li>Sportlik kupee</li>
-    </ul>
+<!-- Product Detail -->
+<section class="product-detail">
+    <div class="detail-container">
+        <div class="detail-image">
+            <img src="https://accelerista.com/wp-content/uploads/2024/05/P90548559_lowRes_the-all-new-bmw-m4-c.jpg" alt="BMW M4">
+        </div>
+        <div class="detail-content">
+            <div class="detail-badge">SPORT COUPÉ</div>
+            <h1 class="detail-title">BMW M4</h1>
+            <p class="detail-subtitle">Aggressive design meets pure driving emotion</p>
+            
+            <div class="detail-price">€94,900</div>
+            
+            <div class="detail-specs">
+                <div class="spec-item">
+                    <div class="spec-label">Engine</div>
+                    <div class="spec-value">3.0L Twin-Turbo Inline-6</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">Power</div>
+                    <div class="spec-value">510 hp</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">0-100 km/h</div>
+                    <div class="spec-value">3.9 seconds</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">Body Style</div>
+                    <div class="spec-value">2-Door Coupé</div>
+                </div>
+            </div>
+            
+            <div class="detail-description">
+                <h3>Description</h3>
+                <p>The BMW M4 embodies aggressive design philosophy and uncompromising performance. Its distinctive styling and enhanced powertrain deliver 510 horsepower, making it the perfect choice for drivers who demand both presence and performance.</p>
+                <p>Engineered for those who refuse to compromise, the M4 combines cutting-edge technology with motorsport heritage to create an unforgettable driving experience.</p>
+            </div>
+            
+            <div class="detail-actions">
+                <button class="btn-primary-new" onclick="addToCart('BMW M4', 94900, 2)">Add to Cart</button>
+                <a href="esileht.html" class="btn-secondary-new">Back to Collection</a>
+            </div>
+        </div>
+    </div>
 </section>
 
-<a href="esileht.html" class="back">← Back to shop.</a>
+<script src="cart.js"></script>
 
 </body>
 </html>
