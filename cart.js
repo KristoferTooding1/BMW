@@ -162,7 +162,7 @@ function displayCart() {
             <div class="cart-item">
                 <div class="item-info">
                     <h3>${item.name}</h3>
-                    <p>Hind: €${item.price}</p>
+                    <p>Price: €${item.price}</p>
                 </div>
                 
                 <div class="item-quantity">
@@ -174,7 +174,7 @@ function displayCart() {
                 </div>
                 
                 <div class="item-total">
-                    <p>Total price: €${(item.price * item.quantity).toFixed(2)}</p>
+                    <p>Total: €${(item.price * item.quantity).toFixed(2)}</p>
                 </div>
                 
                 <button class="btn-remove" onclick="removeFromCart(${item.id})">Remove</button>
