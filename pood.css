@@ -1,235 +1,336 @@
 /* ===== CSS THEME VARIABLES ===== */
-/* These variables define colors for ENTIRE page
-   They can be switched by theme.js without rewriting all CSS
-   Variables use --name syntax and are referenced with var(--name) */
-
-/* Define default (dark) theme colors
-   :root targets the <html> element, making variables available everywhere */
 :root {
     /* Background colors */
-    --bg-primary: #0a0a0a;          /* Main page background */
-    --bg-secondary: #000000;        /* Secondary background */
+    --bg-primary: #0a0a0a;
+    --bg-secondary: #000000;
+    --bg-gradient: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
     
     /* Text colors */
-    --text-primary: #ffffff;        /* Main text color */
-    --text-secondary: #cccccc;      /* Secondary text */
+    --text-primary: #ffffff;
+    --text-secondary: #cccccc;
+    --text-muted: #888888;
     
     /* Component colors */
-    --border-color: #333333;        /* Borders and dividers */
-    --card-bg: #121212;             /* Product card background */
-    --card-shadow: rgba(0,0,0,0.6); /* Shadow under cards */
+    --border-color: #333333;
+    --card-bg: #1a1a1a;
+    --card-shadow: rgba(0, 0, 0, 0.6);
+    --hover-shadow: rgba(28, 105, 212, 0.4);
     
-    /* Accent color (stays same in both themes) */
-    --accent-color: #1c69d4;        /* BMW blue */
+    /* Accent color */
+    --accent-color: #1c69d4;
+    --accent-hover: #0d5cb8;
+    --accent-light: rgba(28, 105, 212, 0.1);
 }
 
 /* ===== GLOBAL STYLES ===== */
-/* These styles apply to EVERYTHING on the page */
-
 * {
-    /* box-sizing controls how width/padding are calculated
-       border-box: width includes padding, so a 320px box stays 320px even with padding
-       (Without this, padding would ADD to the width, making boxes bigger than expected) */
     box-sizing: border-box;
-    
-    /* Font family for all text on the page
-       "Segoe UI" is preferred, but if not available, use any sans-serif font
-       sans-serif fonts are clean and modern (no decorative lines) */
-    font-family: "Segoe UI", sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
-/* ===== BODY STYLING ===== */
-/* The <body> tag wraps everything on the page */
-
 body {
-    margin: 0;  /* Remove default browser margins so nothing is pushed in from edges */
-    
-    /* Use CSS variable instead of hardcoded color
-       This way, when theme.js changes --bg-primary, body background updates automatically */
-    background: var(--bg-primary);
-    
-    /* Change text color based on theme */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: var(--bg-gradient);
     color: var(--text-primary);
-    
-    /* Add smooth transition when theme changes (optional, nice visual effect) */
-    transition: background-color 0.3s ease, color 0.3s ease;
+    line-height: 1.6;
+    transition: all 0.3s ease;
 }
 
 /* ===== HEADER / HERO SECTIONS ===== */
-/* .hero is the main page header, .sub-hero is used on product detail pages */
-
 .hero, .sub-hero {
-    text-align: center;  /* Center all text inside */
-    padding: 80px 20px;  /* Add 80px top/bottom space, 20px left/right space */
+    text-align: center;
+    padding: 100px 20px 80px;
+    background: linear-gradient(180deg, rgba(28, 105, 212, 0.05) 0%, transparent 100%);
 }
 
-/* Make the main title BIG */
-.hero h1 {
-    font-size: 48px;  /* Very large text */
+.hero h1, .sub-hero h1 {
+    font-size: 56px;
+    font-weight: 800;
+    margin-bottom: 16px;
+    background: linear-gradient(135deg, #fff 0%, var(--accent-color) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
-/* Product page titles slightly smaller */
-.sub-hero h1 {
-    font-size: 42px;
+.hero p, .sub-hero p {
+    font-size: 20px;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 /* ===== PRODUCT CARDS CONTAINER ===== */
 .cards {
-    display: flex;  
-    /* flex = flexible layout system that arranges items in rows
-       flexbox is perfect for arranging cards in rows that wrap to new lines */
-    
-    gap: 30px;  /* Space between each card is 30px */
-    justify-content: center;  /* Center the cards horizontally */
-    padding: 40px;  /* Add 40px space around the entire container */
-    flex-wrap: wrap;  /* If cards don't fit in one row, wrap to next line (responsive!) */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+    padding: 60px 40px;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
 /* ===== INDIVIDUAL PRODUCT CARD ===== */
 .card {
-    /* Use variable for card background - changes with theme */
     background: var(--card-bg);
-    border-radius: 16px;  /* Round the corners (makes it look modern) */
-    width: 320px;  /* Each card is 320px wide */
-    padding: 20px;  /* Space inside the card around the content */
-    
-    /* Use variable for shadow - different for each theme */
-    box-shadow: 0 0 25px var(--card-shadow);
-    
-    position: relative;  /* Allows badge to be positioned absolutely inside */
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 8px 32px var(--card-shadow);
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    overflow: hidden;
 }
 
-/* Image inside card takes full width and has rounded corners */
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent-color), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.card:hover::before {
+    opacity: 1;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 48px var(--hover-shadow);
+    border-color: rgba(28, 105, 212, 0.2);
+}
+
 .card img {
-    width: 100%;  /* Stretch to fill card width */
-    border-radius: 12px;  /* Round the image corners */
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 16px;
+    margin-bottom: 20px;
+    transition: transform 0.4s ease;
+}
+
+.card:hover img {
+    transform: scale(1.05);
 }
 
 /* ===== HIDE CARDS DURING FILTERING ===== */
-/* When filter.js adds .hidden class, this makes the card disappear */
 .card.hidden {
-    display: none;  /* None = completely remove from view (doesn't take up space) */
+    display: none;
 }
 
 /* ===== FEATURED CARD ===== */
-/* Highlight one special card (e.g., the "most popular" one) */
 .featured {
-    /* Use variable for border - changes with theme */
-    border: 2px solid var(--accent-color);  /* Blue border to make it stand out */
+    border: 2px solid var(--accent-color);
+    background: linear-gradient(135deg, var(--card-bg) 0%, rgba(28, 105, 212, 0.05) 100%);
 }
 
-/* ===== BADGE (label like "Sports Classic") ===== */
+/* ===== BADGE ===== */
 .badge {
-    /* Use variables for theme-aware styling */
-    position: absolute;  /* Remove from normal flow, position it exactly where we want */
-    top: -12px;   /* Position 12px up (overlaps the card edge) */
-    left: 20px;   /* Position 20px from left edge */
-    background: var(--border-color);  /* Use border color for contrast */
-    padding: 5px 12px;  /* Small padding inside the badge */
-    border-radius: 20px;  /* Very round (pill-shaped) */
-    font-size: 12px;  /* Small text */
-    color: var(--text-primary);  /* Use theme text color */
+    position: absolute;
+    top: 16px;
+    left: 24px;
+    background: var(--accent-color);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(28, 105, 212, 0.4);
 }
 
-/* Special blue badge (for "most popular") */
 .badge.blue {
-    /* Use accent color for special badges */
-    background: var(--accent-color);  /* Use the theme's accent color */
+    background: linear-gradient(135deg, #1c69d4 0%, #0d5cb8 100%);
 }
 
-/* ===== PRICE DISPLAY ===== */
+/* ===== CARD CONTENT ===== */
+.card h2 {
+    font-size: 28px;
+    font-weight: 700;
+    margin: 12px 0;
+    color: var(--text-primary);
+}
+
 .price {
-    font-size: 28px;  /* Large, eye-catching */
-    margin: 10px 0;   /* Space above and below */
+    font-size: 32px;
+    font-weight: 800;
+    margin: 16px 0;
+    color: var(--accent-color);
 }
 
-/* ===== PRODUCT DETAILS LIST ===== */
 ul {
-    padding-left: 20px;  /* Indent the list items */
+    padding-left: 0;
+    list-style: none;
+    margin: 20px 0;
+}
+
+ul li {
+    padding: 8px 0;
+    color: var(--text-secondary);
+    font-size: 14px;
+    position: relative;
+    padding-left: 24px;
+}
+
+ul li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+    font-weight: bold;
 }
 
 /* ===== BUTTONS ===== */
 .btn {
-    display: block;  /* Make button take full width */
-    text-align: center;  /* Center the text inside */
-    padding: 12px;  /* Comfortable padding for clicking */
-    border: 1px solid var(--accent-color);  /* Blue outline */
-    color: var(--accent-color);  /* Blue text */
-    border-radius: 8px;  /* Rounded corners */
-    text-decoration: none;  /* Remove underline from links */
-    margin-top: 15px;  /* Space above button */
-    cursor: pointer;  /* Show hand cursor on hover */
-    
-    /* transition: smooth animation when properties change */
-    transition: transform .12s ease, box-shadow .12s ease, filter .12s ease, background-color .12s ease;
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 14px 24px;
+    border: 2px solid var(--accent-color);
+    color: var(--accent-color);
+    border-radius: 12px;
+    text-decoration: none;
+    margin-top: 12px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 15px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: transparent;
 }
 
-/* ===== PRIMARY BUTTON (e.g., "Purchase now!") ===== */
 .btn.primary {
-    /* Use accent color for primary buttons */
-    background: var(--accent-color);  /* Filled with brand blue */
-    color: #fff;  /* White text stands out on blue */
+    background: var(--accent-color);
+    color: #fff;
+    border-color: var(--accent-color);
+    box-shadow: 0 4px 16px rgba(28, 105, 212, 0.3);
 }
-
-/* ===== BUTTON HOVER EFFECTS ===== */
-/* When user hovers mouse over a button, it "lights up" */
 
 .btn:hover {
-    /* Move button up 3 pixels to indicate it's clickable */
-    transform: translateY(-3px);
-    
-    /* Add a blue glow underneath */
-    box-shadow: 0 10px 24px rgba(28,105,212,0.12);
-    
-    /* Brighten the button slightly (increase brightness by 6%) */
-    filter: brightness(1.06);
-    
-    /* Add subtle background color for "Learn more" buttons */
-    background-color: rgba(28,105,212,0.08);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(28, 105, 212, 0.4);
+    background: var(--accent-light);
 }
 
-/* ===== PRIMARY BUTTON HOVER ===== */
-/* Make "Purchase now!" buttons brighter when hovered */
 .btn.primary:hover {
-    filter: brightness(1.08);  /* Brighten by 8% (more than regular buttons) */
+    background: var(--accent-hover);
+    box-shadow: 0 8px 32px rgba(28, 105, 212, 0.5);
 }
 
-/* CONTENT */
+/* ===== CONTENT SECTION ===== */
 .content {
-    max-width: 800px;
-    margin: auto;
-    padding: 40px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px 40px;
     text-align: center;
 }
 
 .content img {
     width: 100%;
-    border-radius: 16px;
-    margin-bottom: 20px;
+    max-height: 500px;
+    object-fit: cover;
+    border-radius: 20px;
+    margin-bottom: 32px;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3);
 }
 
-/* TIMELINE */
+.content p {
+    font-size: 18px;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    margin: 24px 0;
+}
+
+/* ===== TIMELINE ===== */
 .timeline {
-    padding: 60px 20px;
+    padding: 80px 40px;
     text-align: center;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.timeline h2 {
+    font-size: 36px;
+    margin-bottom: 48px;
+    font-weight: 700;
 }
 
 .year {
-    margin: 20px 0;
-    opacity: .85;
+    margin: 32px 0;
+    padding: 24px;
+    background: var(--card-bg);
+    border-radius: 16px;
+    border-left: 4px solid var(--accent-color);
+    transition: all 0.3s ease;
 }
 
-/* FOOTER */
+.year:hover {
+    transform: translateX(8px);
+    box-shadow: 0 8px 24px rgba(28, 105, 212, 0.2);
+}
+
+.year h3 {
+    color: var(--accent-color);
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.year p {
+    color: var(--text-secondary);
+    font-size: 16px;
+}
+
+/* ===== FOOTER ===== */
 footer {
     text-align: center;
-    padding: 20px;
-    opacity: .5;
+    padding: 40px 20px;
+    color: var(--text-muted);
+    font-size: 14px;
+    border-top: 1px solid var(--border-color);
+    margin-top: 60px;
 }
 
 .back {
-    display: block;
-    text-align: center;
-    margin-bottom: 40px;
-    color: #1c69d4;
+    display: inline-block;
+    margin: 40px auto;
+    color: var(--accent-color);
     text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.back:hover {
+    transform: translateX(-4px);
+    color: var(--accent-hover);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .hero h1, .sub-hero h1 {
+        font-size: 40px;
+    }
+    
+    .hero p, .sub-hero p {
+        font-size: 16px;
+    }
+    
+    .cards {
+        grid-template-columns: 1fr;
+        padding: 40px 20px;
+        gap: 32px;
+    }
+    
+    .card h2 {
+        font-size: 24px;
+    }
+    
+    .price {
+        font-size: 28px;
+    }
 }
