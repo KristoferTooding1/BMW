@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMW M2 - Premium Performance</title>
+    <link rel="stylesheet" href="pood.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<nav class="nav">
+    <div class="nav-container">
+        <div class="nav-brand">BMW M</div>
+        <div class="nav-links">
+            <a href="esileht.html">Back to Collection</a>
+            <a href="ostukorv.html" class="cart-btn">
+                <span class="cart-icon">Cart</span>
+                <span id="cart-count" class="cart-badge" style="display: none;">0</span>
+            </a>
+        </div>
+    </div>
+</nav>
+
+<section class="product-detail">
+    <div class="detail-container">
+        <div class="detail-image">
+            <img src="https://hips.hearstapps.com/hmg-prod/images/2023-bmw-m2-104-641a86e13c5c7.jpg" alt="BMW M2">
+        </div>
+        <div class="detail-content">
+            <div class="detail-badge">COMPACT PERFORMANCE</div>
+            <h1 class="detail-title">BMW M2</h1>
+            <p class="detail-subtitle">Pure driving dynamics in a compact package</p>
+            
+            <div class="detail-price">€64,900</div>
+            
+            <div class="detail-specs">
+                <div class="spec-item">
+                    <div class="spec-label">Engine</div>
+                    <div class="spec-value">3.0L Twin-Turbo Inline-6</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">Power</div>
+                    <div class="spec-value">453 hp</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">0-100 km/h</div>
+                    <div class="spec-value">4.1 seconds</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">Drivetrain</div>
+                    <div class="spec-value">Rear-Wheel Drive</div>
+                </div>
+            </div>
+            
+            <div class="detail-description">
+                <h3>Description</h3>
+                <p>The BMW M2 delivers uncompromising performance in a compact, agile package. With rear-wheel drive and a perfectly balanced chassis, the M2 offers the most engaging driving experience in the M lineup.</p>
+                <p>Its 3.0-liter twin-turbo engine produces 453 horsepower, propelling this compact coupe from 0-100 km/h in just 4.1 seconds while maintaining the raw, connected driving feel that enthusiasts demand.</p>
+            </div>
+            
+            <div class="detail-actions">
+                <button class="btn-primary-new" onclick="addToCart('BMW M2', 64900, 4)">Add to Cart</button>
+                <a href="esileht.html" class="btn-secondary-new">Back to Collection</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="cart.js"></script>
+
+</body>
+</html>
