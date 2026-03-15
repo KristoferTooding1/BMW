@@ -12,7 +12,7 @@
 <!-- Navigation -->
 <nav class="nav">
     <div class="nav-container">
-        <div class="nav-brand">BMW M</div>
+        <a href="esileht.html" class="nav-brand" style="text-decoration: none; color: inherit;">BMW M</a>
         <div class="nav-links">
             <a href="#collection">Collection</a>
             <a href="#features">Features</a>
@@ -299,6 +299,13 @@
 <script src="quickview.js"></script>
 <script src="compare.js"></script>
 <script src="scroll.js"></script>
+
+<script>
+    // Update cart count on page load
+    window.addEventListener('DOMContentLoaded', function() {
+        updateCartCount();
+    });
+</script>
 
 </body>
 </html>
