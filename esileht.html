@@ -65,6 +65,7 @@
         <input type="text" id="searchInput" placeholder="Search models..." class="filter-input">
         <input type="number" id="minPrice" placeholder="Min €" class="filter-input filter-input-small">
         <input type="number" id="maxPrice" placeholder="Max €" class="filter-input filter-input-small">
+        <button onclick="applyFilters()" class="filter-apply">Apply</button>
         <button onclick="resetFilters()" class="filter-reset">Reset</button>
     </div>
     <div class="filter-tags">
@@ -81,6 +82,7 @@
     <div class="products-grid">
         
         <div class="product-card" data-name="BMW M3" data-price="89900">
+            <input type="checkbox" class="compare-checkbox" onchange="toggleCompare(1, 'BMW M3', 89900, ['480 HP', '4.2s', 'RWD/xDrive'])" title="Add to compare">
             <div class="product-image">
                 <img src="images/m3.jpg" alt="BMW M3">
                 <span class="product-badge">Sport</span>
@@ -104,6 +106,7 @@
         </div>
 
         <div class="product-card featured-card" data-name="BMW M4" data-price="94900">
+            <input type="checkbox" class="compare-checkbox" onchange="toggleCompare(2, 'BMW M4', 94900, ['510 HP', '3.9s', 'Coupé'])" title="Add to compare">
             <div class="product-image">
                 <img src="images/m4.jpg" alt="BMW M4">
                 <span class="product-badge badge-featured">Featured</span>
@@ -127,6 +130,7 @@
         </div>
 
         <div class="product-card" data-name="BMW M5" data-price="129900">
+            <input type="checkbox" class="compare-checkbox" onchange="toggleCompare(3, 'BMW M5', 129900, ['625 HP', '3.3s', 'M xDrive'])" title="Add to compare">
             <div class="product-image">
                 <img src="images/m5.jpg" alt="BMW M5">
                 <span class="product-badge">Luxury</span>
@@ -149,6 +153,7 @@
             </div>
         </div>
         <div class="product-card" data-name="BMW M2" data-price="64900">
+            <input type="checkbox" class="compare-checkbox" onchange="toggleCompare(4, 'BMW M2', 64900, ['453 HP', '4.1s', 'RWD'])" title="Add to compare">
             <div class="product-image">
                 <img src="images/m2.jpg" alt="BMW M2">
                 <span class="product-badge">Compact Power</span>
@@ -172,6 +177,7 @@
         </div>
 
         <div class="product-card" data-name="BMW M8" data-price="159900">
+            <input type="checkbox" class="compare-checkbox" onchange="toggleCompare(5, 'BMW M8', 159900, ['625 HP', '3.2s', 'M xDrive'])" title="Add to compare">
             <div class="product-image">
                 <img src="images/m8.jpg" alt="BMW M8">
                 <span class="product-badge">Ultimate Gran Turismo</span>
@@ -195,6 +201,7 @@
         </div>
 
         <div class="product-card" data-name="BMW X5 M" data-price="139900">
+            <input type="checkbox" class="compare-checkbox" onchange="toggleCompare(6, 'BMW X5 M', 139900, ['617 HP', '3.8s', 'AWD'])" title="Add to compare">
             <div class="product-image">
                 <img src="images/x5m.jpg" alt="BMW X5 M">
                 <span class="product-badge">Performance SUV</span>
@@ -285,6 +292,11 @@
 <script src="filter.js"></script>
 <script src="scroll.js"></script>
 <script src="quickview.js"></script>
+<button id="compare-btn" onclick="showCompareModal()">
+    Compare <span class="compare-count">0</span>
+</button>
+
+<script src="compare.js"></script>
 
 
 </body>
