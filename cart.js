@@ -77,26 +77,27 @@ function addToCart(productName, price, productId) {
     }, 400);
 }
 
-// ===== FUNCTION TO REMOVE ITEM FROM CART =====
 function removeFromCart(productId) {
-    // Find the index (position) of the item in the cart array
+    // Find product name for confirmation message
+    const product = cart.find(item => item.id === productId);
+    if (!product) return;
+    
+    // Show confirmation dialog
+    if (!confirm(`Are you sure you want to remove ${product.name} from your cart?`)) {
+        return; // User cancelled
+    }
+    
     const index = cart.findIndex(item => item.id === productId);
     
-    // If item was found (index is not -1)
     if (index > -1) {
-        // Remove the item from the cart array
-        // splice(index, 1) removes 1 item at the specified index
         cart.splice(index, 1);
     }
     
-    // Save the updated cart to localStorage
     localStorage.setItem('cart', JSON.stringify(cart));
-    
-    // Refresh the cart display on the page
     displayCart();
-    
-    // Update the cart count
     updateCartCount();
+    
+    showToast(`${product.name} removed from cart`);
 }
 
 // ===== FUNCTION TO CHANGE QUANTITY OF AN ITEM =====
@@ -190,21 +191,20 @@ function displayCart() {
     `;
 }
 
-// ===== FUNCTION TO UPDATE CART COUNT BADGE =====
 function updateCartCount() {
-    // Find the element that shows how many items are in the cart
     const cartBadge = document.getElementById('cart-count');
     
-    // If the element exists
     if (cartBadge) {
-        // Count total items in cart (sum of all quantities)
         let totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
         
-        // Display the count
         cartBadge.textContent = totalItems;
         
-        // Show the badge only if there are items
-        cartBadge.style.display = totalItems > 0 ? 'block' : 'none';
+        // Always show if items > 0
+        if (totalItems > 0) {
+            cartBadge.style.display = 'inline-flex';
+        } else {
+            cartBadge.style.display = 'none';
+        }
     }
 }
 

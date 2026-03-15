@@ -1,10 +1,12 @@
 // ===== SEARCH & FILTER SYSTEM =====
-const productCards = document.querySelectorAll('.card');
+const productCards = document.querySelectorAll('.product-card');
 
 function filterProducts() {
     const searchTerm = document.getElementById('searchInput').value.toLowerCase();
     const minPrice = parseInt(document.getElementById('minPrice').value) || 0;
     const maxPrice = parseInt(document.getElementById('maxPrice').value) || Infinity;
+    
+    let visibleCount = 0;
     
     productCards.forEach(card => {
         const productName = card.getAttribute('data-name').toLowerCase();
@@ -15,12 +17,14 @@ function filterProducts() {
         
         if (matchesSearch && matchesPrice) {
             card.classList.remove('hidden');
+            visibleCount++;
         } else {
             card.classList.add('hidden');
         }
     });
     
-    console.log(`Filter: search="${searchTerm}", price: €${minPrice}-€${maxPrice}`);
+    console.log(`Filter applied: ${visibleCount} products shown`);
+    showToast(`${visibleCount} models found`);
 }
 
 function resetFilters() {
@@ -32,7 +36,8 @@ function resetFilters() {
         card.classList.remove('hidden');
     });
     
-    console.log('Filters reset - showing all products');
+    console.log('Filters reset');
+    showToast('Filters reset - showing all models');
 }
 
 function quickFilter(type) {
@@ -51,21 +56,21 @@ function quickFilter(type) {
         searchInput.value = type;
     }
     
-    filterProducts(); // Auto-apply for quick filters
+    filterProducts();
 }
 
-// Add Enter key support
 window.addEventListener('DOMContentLoaded', function() {
     const searchInput = document.getElementById('searchInput');
     const minPrice = document.getElementById('minPrice');
     const maxPrice = document.getElementById('maxPrice');
     
-    // Apply on Enter key
     [searchInput, minPrice, maxPrice].forEach(input => {
-        input.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                filterProducts();
-            }
-        });
+        if (input) {
+            input.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    filterProducts();
+                }
+            });
+        }
     });
 });
