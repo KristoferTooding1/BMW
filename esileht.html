@@ -65,13 +65,16 @@
         <input type="text" id="searchInput" placeholder="Search models..." class="filter-input">
         <input type="number" id="minPrice" placeholder="Min €" class="filter-input filter-input-small">
         <input type="number" id="maxPrice" placeholder="Max €" class="filter-input filter-input-small">
-        <button onclick="applyFilters()" class="filter-apply">Apply</button>
+        <button onclick="filterProducts()" class="filter-apply">Apply Filters</button>
         <button onclick="resetFilters()" class="filter-reset">Reset</button>
     </div>
     <div class="filter-tags">
+        <button onclick="quickFilter('M2')" class="tag">M2</button>
         <button onclick="quickFilter('M3')" class="tag">M3</button>
         <button onclick="quickFilter('M4')" class="tag">M4</button>
         <button onclick="quickFilter('M5')" class="tag">M5</button>
+        <button onclick="quickFilter('M8')" class="tag">M8</button>
+        <button onclick="quickFilter('X5')" class="tag">X5 M</button>
         <button onclick="quickFilter('affordable')" class="tag">Under €100k</button>
         <button onclick="quickFilter('luxury')" class="tag">Premium</button>
     </div>

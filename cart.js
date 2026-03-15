@@ -21,7 +21,6 @@ let cart = JSON.parse(localStorage.getItem('cart')) || [];
 function addToCart(productName, price, productId) {
     console.log('addToCart called →', productName, price, productId);
     
-    // Find the button that was clicked
     const buttons = document.querySelectorAll(`button[onclick*="${productId}"]`);
     let clickedButton = null;
     buttons.forEach(btn => {
@@ -30,20 +29,29 @@ function addToCart(productName, price, productId) {
         }
     });
     
-    // Show loading state
     if (clickedButton) {
         clickedButton.disabled = true;
         clickedButton.style.opacity = '0.6';
         clickedButton.textContent = 'Adding...';
     }
     
-    // Simulate network delay for visual feedback
     setTimeout(() => {
+        // Map product IDs to images
+        const imageMap = {
+            1: 'images/m3.jpg',
+            2: 'images/m4.jpg',
+            3: 'images/m5.jpg',
+            4: 'images/m2.jpg',
+            5: 'images/m8.jpg',
+            6: 'images/x5m.jpg'
+        };
+        
         const product = {
             id: productId,
             name: productName,
             price: price,
-            quantity: 1
+            quantity: 1,
+            image: imageMap[productId] || 'images/m3.jpg'
         };
         
         const existingProduct = cart.find(item => item.id === productId);
@@ -61,7 +69,6 @@ function addToCart(productName, price, productId) {
         showToast(`✓ ${productName} added! (${totalItems} in cart)`);
         updateCartCount();
         
-        // Reset button
         if (clickedButton) {
             clickedButton.disabled = false;
             clickedButton.style.opacity = '1';
