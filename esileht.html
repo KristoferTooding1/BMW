@@ -96,7 +96,7 @@
                 <div class="product-footer">
                     <div class="product-price">€89,900</div>
                     <div class="product-actions">
-                        <a href="M3.html" class="btn-link">Details</a>
+                        <button class="btn-link" onclick="showQuickView(1, 'BMW M3', 89900, ['480 HP', '4.2s', 'RWD/xDrive'], 'images/m3.jpg', 'The perfect balance of performance and daily usability')">Quick View</button>
                         <button onclick="addToCart('BMW M3', 89900, 1)" class="btn-add">Add to Cart</button>
                     </div>
                 </div>
@@ -119,7 +119,7 @@
                 <div class="product-footer">
                     <div class="product-price">€94,900</div>
                     <div class="product-actions">
-                        <a href="M4.html" class="btn-link">Details</a>
+                        <button class="btn-link" onclick="showQuickView(2, 'BMW M4', 94900, ['510 HP', '3.9s', 'Coupé'], 'images/m4.jpg', 'Aggressive design meets pure driving emotion')">Quick View</button>
                         <button onclick="addToCart('BMW M4', 94900, 2)" class="btn-add">Add to Cart</button>
                     </div>
                 </div>
@@ -142,7 +142,7 @@
                 <div class="product-footer">
                     <div class="product-price">€129,900</div>
                     <div class="product-actions">
-                        <a href="M5.html" class="btn-link">Details</a>
+                        <button class="btn-link" onclick="showQuickView(3, 'BMW M5', 129900, ['625 HP', '3.3s', 'M xDrive'], 'images/m5.jpg', 'Executive sedan with supercar performance')">Quick View</button>
                         <button onclick="addToCart('BMW M5', 129900, 3)" class="btn-add">Add to Cart</button>
                     </div>
                 </div>
@@ -164,7 +164,7 @@
                 <div class="product-footer">
                     <div class="product-price">€64,900</div>
                     <div class="product-actions">
-                        <a href="M2.html" class="btn-link">Details</a>
+                        <button class="btn-link" onclick="showQuickView(4, 'BMW M2', 64900, ['453 HP', '4.1s', 'RWD'], 'images/m2.jpg', 'Pure driving dynamics in a compact package')">Quick View</button>
                         <button onclick="addToCart('BMW M2', 64900, 4)" class="btn-add">Add to Cart</button>
                     </div>
                 </div>
@@ -187,7 +187,7 @@
                 <div class="product-footer">
                     <div class="product-price">€159,900</div>
                     <div class="product-actions">
-                        <a href="M8.html" class="btn-link">Details</a>
+                        <button class="btn-link" onclick="showQuickView(5, 'BMW M8', 159900, ['625 HP', '3.2s', 'M xDrive'], 'images/m8.jpg', 'The flagship of the M division')">Quick View</button>
                         <button onclick="addToCart('BMW M8', 159900, 5)" class="btn-add">Add to Cart</button>
                     </div>
                 </div>
@@ -210,7 +210,7 @@
                 <div class="product-footer">
                     <div class="product-price">€139,900</div>
                     <div class="product-actions">
-                        <a href="X5M.html" class="btn-link">Details</a>
+                        <button class="btn-link" onclick="showQuickView(6, 'BMW X5 M', 139900, ['617 HP', '3.8s', 'AWD'], 'images/x5m.jpg', 'Supercar performance meets SUV versatility')">Quick View</button>
                         <button onclick="addToCart('BMW X5 M', 139900, 6)" class="btn-add">Add to Cart</button>
                     </div>
                 </div>
@@ -283,7 +283,9 @@
 <script src="theme.js"></script>
 <script src="cart.js"></script>
 <script src="filter.js"></script>
-<script src="scroll.js"></script>   
+<script src="scroll.js"></script>
+<script src="quickview.js"></script>
+
 
 </body>
 </html>
