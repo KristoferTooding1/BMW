@@ -75,11 +75,21 @@ body > * {
     top: 0;
     left: 0;
     right: 0;
-    background: var(--bg-primary);
+    background: rgba(15, 15, 15, 0.8);
     border-bottom: 1px solid var(--border);
     z-index: 1000;
     backdrop-filter: blur(20px);
     transition: all 0.3s ease;
+}
+
+.nav.scrolled {
+    background: rgba(15, 15, 15, 0.95);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+    padding: 0;
+}
+
+.nav.scrolled .nav-container {
+    padding: 12px 40px;
 }
 
 .nav-container {
